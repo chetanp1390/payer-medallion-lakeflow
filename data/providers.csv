@@ -1,0 +1,6 @@
+provider_id,npi,provider_name,specialty,address,city,state
+2001,1111111111,Dr. Adams,Family Practice,123 Main St,Louisville,KY
+2002,2222222222,Dr. Baker,Internal Medicine,234 Oak St,Louisville,KY
+2003,3333333333,Dr. Clark,Pediatrics,345 Pine St,Lexington,KY
+2004,4444444444,Dr. Davis,Cardiology,456 Maple Ave,Louisville,KY
+2005,5555555555,Dr. Evans,Oncology,567 Elm St,Frankfort,KY

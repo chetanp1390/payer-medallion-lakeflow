@@ -1,0 +1,8 @@
+claim_id,procedure_code,procedure_desc,amount
+CLM001,99213,Office/outpatient visit,$120
+CLM002,87070,Bacteria culture,$80
+CLM003,93000,EKG/ECG with interpretation,$150
+CLM004,71020,Chest X-ray,$110
+CLM005,80050,General health panel,$300
+CLM006,36415,Blood draw,$30
+CLM007,99214,Detailed office visit,$130

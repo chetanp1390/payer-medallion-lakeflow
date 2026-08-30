@@ -1,0 +1,10 @@
+claim_id,diagnosis_code,diagnosis_desc
+CLM001,J10.1,Influenza with pneumonia
+CLM001,E11.9,Type 2 diabetes mellitus
+CLM002,I10,Essential hypertension
+CLM003,M54.5,Low back pain
+CLM004,J20.9,Acute bronchitis
+CLM005,N39.0,UTI
+CLM006,F41.1,Generalized anxiety disorder
+CLM007,J45.909,Asthma
+CLM008,E78.5,Hyperlipidemia
