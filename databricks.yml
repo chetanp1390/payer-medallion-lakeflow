@@ -1,0 +1,20 @@
+bundle:
+  name: payer_medallion
+
+variables:
+  catalog_name:
+    default: payer_demo
+  bronze_schema_name:
+    default: payor_bronze
+  silver_schema_name:
+    default: payor_silver
+  gold_schema_name:
+    default: payor_gold
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
