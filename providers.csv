@@ -1,0 +1,151 @@
+provider_id,npi,provider_name,specialty,address,city,state
+2001,1111111111,Dr. Adams,Family Practice,123 Main St,Louisville,KY
+2002,2222222222,Dr. Baker,Internal Medicine,234 Oak St,Louisville,KY
+2003,3333333333,Dr. Clark,Pediatrics,345 Pine St,Lexington,KY
+2004,4444444444,Dr. Davis,Cardiology,456 Maple Ave,Louisville,KY
+2005,5555555555,Dr. Evans,Oncology,567 Elm St,Frankfort,KY
+2006,9062059777,Dr. Kramer,Dermatology,7803 Bardstown Rd,Lexington,KY
+2007,9976485442,Dr. Carter,Pediatrics,1002 Bardstown Rd,Louisville,KY
+2008,9177309486,Dr. Okafor,Family Practice,7728 Park Ave,Richmond,KY
+2009,9176973943,Dr. Perry,Pediatrics,8974 Walnut St,Cincinnati,OH
+2010,9643256941,Dr. Castillo,Pediatrics,8260 Chestnut St,New Albany,IN
+2011,9883822661,Dr. Thompson,Internal Medicine,8260 Maple Ave,Lexington,KY
+2012,9472754550,Dr. Benson,Family Practice,1470 Elm St,Richmond,KY
+2013,9507565505,Dr. Zimmerman,Orthopedics,7890 Cedar Ln,Elizabethtown,KY
+2014,9249802808,Dr. Knight,Family Practice,2857 Lake Dr,Lexington,KY
+2015,9796444831,Dr. Stone,Orthopedics,3376 Main St,Lexington,KY
+2016,9719591464,Dr. Robbins,Family Practice,4472 Pine St,Covington,KY
+2017,9390313939,Dr. Sutton,Internal Medicine,4951 Spring St,Frankfort,KY
+2018,9277472004,Dr. Meyer,Internal Medicine,8945 Pine St,Georgetown,KY
+2019,9551480747,Dr. Jordan,Family Practice,6600 Broadway,Richmond,KY
+2020,9607470141,Dr. Ellis,Oncology,3332 Chestnut St,Frankfort,KY
+2021,9129954365,Dr. Gray,Family Practice,2988 Main St,Richmond,KY
+2022,9002464491,Dr. Dixon,Endocrinology,5702 Bardstown Rd,Lexington,KY
+2023,9584203808,Dr. Rhodes,Internal Medicine,5419 Pine St,Lexington,KY
+2024,9122677973,Dr. Chen,Cardiology,1155 Chestnut St,Louisville,KY
+2025,9553384893,Dr. Fowler,Internal Medicine,2086 College St,Jeffersonville,IN
+2026,9991150249,Dr. Coleman,Internal Medicine,9825 Pine St,Lexington,KY
+2027,9815430736,Dr. Weiss,Dermatology,4120 Walnut St,Louisville,KY
+2028,9099201088,Dr. Fuller,Family Practice,1602 Park Ave,Covington,KY
+2029,9123973945,Dr. Lewis,Cardiology,4350 Pine St,Louisville,KY
+2030,9069125967,Dr. Kelly,Family Practice,5794 Broadway,Louisville,KY
+2031,9781415903,Dr. Sanders,Obstetrics & Gynecology,9636 Cedar Ln,Louisville,KY
+2032,9529940551,Dr. Cruz,Pediatrics,6312 River Rd,Bowling Green,KY
+2033,9915197844,Dr. Vargas,Family Practice,6316 Hill St,Louisville,KY
+2034,9274235769,Dr. Marshall,Family Practice,8603 Park Ave,Louisville,KY
+2035,9416982452,Dr. Tucker,Pediatrics,2733 Elm St,Paducah,KY
+2036,9804531183,Dr. Medina,Dermatology,3141 Lake Dr,Clarksville,TN
+2037,9251415070,Dr. Fisher,Pulmonology,2009 Maple Ave,Louisville,KY
+2038,9838395787,Dr. Gordon,Family Practice,8441 Bardstown Rd,Frankfort,KY
+2039,9265942003,Dr. Lopez,Family Practice,9173 Bardstown Rd,Louisville,KY
+2040,9496088892,Dr. Turner,Family Practice,9699 Cedar Ln,Clarksville,TN
+2041,9771853598,Dr. Gupta,Dermatology,8270 Market St,Bowling Green,KY
+2042,9014414623,Dr. Richards,Internal Medicine,3701 Bardstown Rd,Bowling Green,KY
+2043,9622796984,Dr. Pierce,Internal Medicine,7648 Cedar Ln,Louisville,KY
+2044,9285576021,Dr. Osei,Cardiology,7301 Main St,Elizabethtown,KY
+2045,9196606750,Dr. Wright,Orthopedics,5227 Lake Dr,Paducah,KY
+2046,9454797990,Dr. Nakamura,Family Practice,2583 Spring St,Georgetown,KY
+2047,9115054465,Dr. Powell,Family Practice,7231 Park Ave,Louisville,KY
+2048,9198171704,Dr. Daniels,Obstetrics & Gynecology,6547 Park Ave,Lexington,KY
+2049,9378876273,Dr. Curtis,Dermatology,5315 Cedar Ln,Covington,KY
+2050,9547317159,Dr. Mendez,Family Practice,9274 Walnut St,Louisville,KY
+2051,9907894128,Dr. Wolfe,Pediatrics,8703 Chestnut St,Bowling Green,KY
+2052,9500478429,Dr. Norris,Family Practice,4593 Cedar Ln,Frankfort,KY
+2053,9751390862,Dr. Harper,Internal Medicine,7724 River Rd,Covington,KY
+2054,9166068802,Dr. Lambert,Family Practice,2460 Market St,Georgetown,KY
+2055,9926900010,Dr. Diaz,Dermatology,8135 Shelbyville Rd,Louisville,KY
+2056,9206899178,Dr. Pruitt,Obstetrics & Gynecology,6941 Hill St,Louisville,KY
+2057,9165575608,Dr. Kaplan,Family Practice,4498 Pine St,Louisville,KY
+2058,9075976500,Dr. Mitchell,Dermatology,6139 Main St,Louisville,KY
+2059,9130713954,Dr. Khan,Psychiatry,5421 Hill St,Lexington,KY
+2060,9295345562,Dr. Sato,Oncology,6462 Broadway,Frankfort,KY
+2061,9494119192,Dr. Hendrix,Family Practice,1015 Cedar Ln,Owensboro,KY
+2062,9941482956,Dr. Page,Pediatrics,3207 Lake Dr,Frankfort,KY
+2063,9205355756,Dr. Johnson,Pediatrics,5854 Chestnut St,Louisville,KY
+2064,9145653958,Dr. Kim,Internal Medicine,7319 Shelbyville Rd,Richmond,KY
+2065,9527235834,Dr. Tanaka,Pulmonology,508 Pine St,Covington,KY
+2066,9025341730,Dr. Navarro,Family Practice,7378 Lake Dr,Clarksville,TN
+2067,9371266153,Dr. Garcia,Obstetrics & Gynecology,5017 College St,Lexington,KY
+2068,9761773963,Dr. Irwin,Emergency Medicine,205 Spring St,Covington,KY
+2069,9148999528,Dr. Cole,Cardiology,7955 College St,Owensboro,KY
+2070,9308704449,Dr. Ward,Family Practice,1576 Cedar Ln,Lexington,KY
+2071,9212149574,Dr. Ramos,Pulmonology,236 Oak St,Nashville,TN
+2072,9564677607,Dr. Ibarra,Internal Medicine,3692 Park Ave,Elizabethtown,KY
+2073,9457683549,Dr. Iyer,Internal Medicine,3088 Shelbyville Rd,Louisville,KY
+2074,9855103996,Dr. Rao,Psychiatry,6282 Broadway,Lexington,KY
+2075,9069644315,Dr. Ortiz,Internal Medicine,5651 Main St,Louisville,KY
+2076,9798684976,Dr. Nelson,Internal Medicine,8952 Bardstown Rd,Owensboro,KY
+2077,9801578465,Dr. Bowen,Endocrinology,9522 Chestnut St,Lexington,KY
+2078,9879763012,Dr. Young,Endocrinology,501 Bardstown Rd,Georgetown,KY
+2079,9439240760,Dr. Lucas,Pediatrics,2274 Bardstown Rd,Elizabethtown,KY
+2080,9200390319,Dr. Reed,Obstetrics & Gynecology,6717 Park Ave,Paducah,KY
+2081,9738309216,Dr. Stevens,Dermatology,2389 River Rd,Covington,KY
+2082,9507468662,Dr. Kowalski,Family Practice,2429 Broadway,Lexington,KY
+2083,9275431258,Dr. Lindqvist,Internal Medicine,8590 Maple Ave,Paducah,KY
+2084,9485962745,Dr. Griffin,Family Practice,1440 Pine St,Lexington,KY
+2085,9503492431,Dr. Lynch,Emergency Medicine,1109 Walnut St,Covington,KY
+2086,9349683448,Dr. Joshi,Family Practice,9500 College St,New Albany,IN
+2087,9832538935,Dr. Erickson,Cardiology,9743 Park Ave,Lexington,KY
+2088,9822311380,Dr. Spencer,Cardiology,2875 Oak St,Bowling Green,KY
+2089,9484995628,Dr. Hudson,Obstetrics & Gynecology,6681 Lake Dr,Bowling Green,KY
+2090,9314639759,Dr. Lowe,Obstetrics & Gynecology,4343 Pine St,Louisville,KY
+2091,9002509425,Dr. Nguyen,Endocrinology,7843 Cedar Ln,Evansville,IN
+2092,9708642934,Dr. Pham,Family Practice,3962 Elm St,Louisville,KY
+2093,9810152403,Dr. Webb,Family Practice,4119 Broadway,Evansville,IN
+2094,9235294863,Dr. Kerr,Obstetrics & Gynecology,2336 Park Ave,Elizabethtown,KY
+2095,9487116031,Dr. Doyle,Pulmonology,301 Lake Dr,Cincinnati,OH
+2096,9117642052,Dr. Garner,Family Practice,5883 Spring St,New Albany,IN
+2097,9641879822,Dr. Holland,Family Practice,2535 Lake Dr,Lexington,KY
+2098,9037813571,Dr. Salazar,Pediatrics,5987 Cedar Ln,Frankfort,KY
+2099,9080733071,Dr. Banks,Pediatrics,6559 Park Ave,Richmond,KY
+2100,9181521716,Dr. Tran,Orthopedics,6892 Oak St,Covington,KY
+2101,9090595531,Dr. Jenkins,Pediatrics,5712 Lake Dr,Louisville,KY
+2102,9127045123,Dr. Yang,Psychiatry,6603 College St,Lexington,KY
+2103,9288826615,Dr. Estrada,Family Practice,5247 Broadway,Louisville,KY
+2104,9277914959,Dr. Flores,Orthopedics,222 Main St,Covington,KY
+2105,9078631641,Dr. Hopkins,Cardiology,3624 College St,Paducah,KY
+2106,9992234876,Dr. Hamilton,Family Practice,8707 Chestnut St,Louisville,KY
+2107,9757954179,Dr. Lam,Pediatrics,6955 River Rd,Bowling Green,KY
+2108,9474029938,Dr. Thornton,Obstetrics & Gynecology,7149 Lake Dr,Louisville,KY
+2109,9655340659,Dr. Valdez,Internal Medicine,5041 Market St,Lexington,KY
+2110,9713136030,Dr. Boyd,Family Practice,9458 Park Ave,Lexington,KY
+2111,9832429145,Dr. Ford,Family Practice,659 Market St,Frankfort,KY
+2112,9092664812,Dr. Walker,Internal Medicine,2573 Pine St,Louisville,KY
+2113,9919693950,Dr. Nash,Dermatology,4119 Pine St,Covington,KY
+2114,9887645510,Dr. Vaughn,Internal Medicine,2581 Market St,Cincinnati,OH
+2115,9772838417,Dr. Hayes,Psychiatry,395 Park Ave,Lexington,KY
+2116,9287132186,Dr. Walsh,Family Practice,1859 Chestnut St,Huntington,WV
+2117,9718587355,Dr. Bishop,Pediatrics,7155 Elm St,Elizabethtown,KY
+2118,9080735244,Dr. Wade,Internal Medicine,5291 Broadway,Louisville,KY
+2119,9119048911,Dr. Murphy,Pediatrics,3751 Bardstown Rd,Lexington,KY
+2120,9311903960,Dr. Brooks,Family Practice,4657 College St,New Albany,IN
+2121,9918873481,Dr. Abbott,Cardiology,8221 Lake Dr,Elizabethtown,KY
+2122,9076607678,Dr. Russell,Internal Medicine,2177 Maple Ave,Louisville,KY
+2123,9059228034,Dr. Emerson,Pediatrics,7919 Pine St,Covington,KY
+2124,9196347743,Dr. Schmidt,Family Practice,6567 Chestnut St,Bowling Green,KY
+2125,9351069850,Dr. Barnes,Pediatrics,9782 Market St,Lexington,KY
+2126,9457613397,Dr. Dawson,Psychiatry,3690 Park Ave,Covington,KY
+2127,9755793416,Dr. Chambers,Pediatrics,4046 Walnut St,Louisville,KY
+2128,9803616763,Dr. Moss,Pediatrics,293 River Rd,Cincinnati,OH
+2129,9872961182,Dr. Price,Family Practice,7605 Pine St,Paducah,KY
+2130,9729557795,Dr. Hart,Internal Medicine,6078 Park Ave,Owensboro,KY
+2131,9953465054,Dr. Grant,Oncology,6967 River Rd,Owensboro,KY
+2132,9883385744,Dr. Noble,Oncology,6295 Hill St,Lexington,KY
+2133,9938990797,Dr. Holt,Internal Medicine,2385 Park Ave,Georgetown,KY
+2134,9666232453,Dr. Jensen,Pediatrics,4117 Cedar Ln,Lexington,KY
+2135,9130034718,Dr. Morgan,Obstetrics & Gynecology,2398 Pine St,Frankfort,KY
+2136,9492191044,Dr. Elliott,Dermatology,6172 River Rd,Louisville,KY
+2137,9157224826,Dr. Larsen,Emergency Medicine,4535 Pine St,Huntington,WV
+2138,9552526760,Dr. Newman,Obstetrics & Gynecology,9822 Main St,Louisville,KY
+2139,9719332414,Dr. Vu,Pediatrics,2157 Main St,Nashville,TN
+2140,9689894332,Dr. Alvarez,Orthopedics,7438 Spring St,Lexington,KY
+2141,9158903135,Dr. Ferguson,Pediatrics,2849 Oak St,Louisville,KY
+2142,9870036783,Dr. Allen,Family Practice,1746 Main St,Louisville,KY
+2143,9548004357,Dr. Reyes,Psychiatry,5857 Elm St,Lexington,KY
+2144,9743342626,Dr. Ingram,Dermatology,7464 College St,Lexington,KY
+2145,9108036981,Dr. Quinn,Family Practice,9779 Chestnut St,Louisville,KY
+2146,9999841624,Dr. Dalton,Pediatrics,6529 College St,Lexington,KY
+2147,9538374050,Dr. Fox,Dermatology,9223 Shelbyville Rd,Covington,KY
+2148,9271835137,Dr. Freeman,Pediatrics,2752 Pine St,Louisville,KY
+2149,9680300258,Dr. Graham,Internal Medicine,7680 Chestnut St,Bowling Green,KY
+2150,9848940324,Dr. Rosen,Family Practice,5840 Market St,Paducah,KY
