@@ -1,20 +1,55 @@
 bundle:
   name: payer_medallion
-
-variables:
-  catalog_name:
-    default: payer_demo
-  bronze_schema_name:
-    default: payor_bronze
-  silver_schema_name:
-    default: payor_silver
-  gold_schema_name:
-    default: payor_gold
+  engine: direct            # required for Genie agents (genie_spaces)
 
 include:
   - resources/*.yml
+
+variables:
+  catalog:
+    default: payer_demo
+  bronze_schema:
+    default: payor_bronze
+  silver_schema:
+    default: payor_silver
+  gold_schema:
+    default: payor_gold
+  warehouse_id:
+    description: SQL warehouse for dashboards, Genie and SQL
+    lookup:
+      warehouse: Serverless Starter Warehouse
 
 targets:
   dev:
     mode: development
     default: true
+    workspace:
+      host: https://dbc-72b501fe-b938.cloud.databricks.com
+    variables:
+      bronze_schema: dev_payor_bronze
+      silver_schema: dev_payor_silver
+      gold_schema: dev_payor_gold
+
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-72b501fe-b938.cloud.databricks.com
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: ${workspace.current_user.userName}
+        level: CAN_MANAGE
+    # BI assets are prod-only: their SQL names payer_demo.payor_gold directly
+    resources:
+      dashboards:
+        payer_dashboard:
+          display_name: Payer Claims Overview
+          file_path: src/dashboards/payer_dashboard.lvdash.json
+          warehouse_id: ${var.warehouse_id}
+          parent_path: /Workspace/Users/${workspace.current_user.userName}
+          embed_credentials: true
+      genie_spaces:
+        payer_genie:
+          title: Payer Claims Analyst
+          file_path: src/genie/payer_genie.geniespace.json
+          warehouse_id: ${var.warehouse_id}
+          parent_path: /Workspace/Users/${workspace.current_user.userName}

@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: databricks-workspace     # Free Edition runs one pipeline at a time
+  cancel-in-progress: false
+
+jobs:
+  dev:
+    name: dev
+    runs-on: ubuntu-latest
+    env:
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@main
+      - name: Validate
+        run: databricks bundle validate -t dev
+      - name: Deploy to dev
+        run: databricks bundle deploy -t dev
+      - name: Run pipeline, semantic layer and data tests
+        run: databricks bundle run payer_refresh -t dev

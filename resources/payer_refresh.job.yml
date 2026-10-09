@@ -1,0 +1,32 @@
+resources:
+  jobs:
+    payer_refresh:
+      name: payer_refresh
+      parameters:             # passed to every notebook as widget values
+        - name: catalog
+          default: ${var.catalog}
+        - name: bronze_schema
+          default: ${var.bronze_schema}
+        - name: silver_schema
+          default: ${var.silver_schema}
+        - name: gold_schema
+          default: ${var.gold_schema}
+      tasks:
+        - task_key: setup
+          notebook_task:
+            notebook_path: ../src/setup/00_setup.py
+        - task_key: pipeline
+          depends_on:
+            - task_key: setup
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.payer_pipeline.id}
+        - task_key: semantic_layer
+          depends_on:
+            - task_key: pipeline
+          notebook_task:
+            notebook_path: ../src/setup/05_semantic_layer.py
+        - task_key: data_tests
+          depends_on:
+            - task_key: semantic_layer
+          notebook_task:
+            notebook_path: ../src/tests/06_data_tests.py
