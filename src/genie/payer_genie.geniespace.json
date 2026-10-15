@@ -1,0 +1,475 @@
+{
+  "benchmarks": {
+    "questions": [
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT\n",
+              "  p.`provider_id`,\n",
+              "  p.`provider_name`,\n",
+              "  p.`specialty`,\n",
+              "  COUNT(c.`claim_id`) AS `total_claims`,\n",
+              "  SUM(\n",
+              "    CASE\n",
+              "      WHEN c.`claim_status` = 'denied' THEN 1\n",
+              "      ELSE 0\n",
+              "    END\n",
+              "  ) AS `denied_claims`,\n",
+              "  (\n",
+              "    SUM(\n",
+              "      CASE\n",
+              "        WHEN c.`claim_status` = 'denied' THEN 1\n",
+              "        ELSE 0\n",
+              "      END\n",
+              "    )\n",
+              "      * 100.0\n",
+              "      / COUNT(c.`claim_id`)\n",
+              "  ) AS `denial_rate`\n",
+              "FROM\n",
+              "  `payer_demo`.`payor_gold`.`fact_claims` c\n",
+              "    JOIN `payer_demo`.`payor_gold`.`dim_provider` p\n",
+              "      ON c.`provider_id` = p.`provider_id`\n",
+              "GROUP BY\n",
+              "  p.`provider_id`,\n",
+              "  p.`provider_name`,\n",
+              "  p.`specialty`\n",
+              "HAVING\n",
+              "  COUNT(c.`claim_id`) >= 20\n",
+              "ORDER BY\n",
+              "  `denial_rate` DESC\n",
+              "LIMIT 5"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd3c4951a809b6c2204b3089ef1",
+        "question": [
+          "Which 5 providers with at least 20 claims have the highest denial rate?"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT ROUND(SUM(total_charge), 2) AS total_charges FROM payer_demo.payor_gold.fact_claims WHERE claim_id IN (SELECT claim_id FROM payer_demo.payor_gold.claim_diagnosis WHERE diagnosis_desc ILIKE '%hypertension%')"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd3bde01320bdafedf7dff0eab9",
+        "question": [
+          "Total charges for claims with a hypertension diagnosis"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT ROUND(SUM(total_charge), 2) AS total_charges FROM payer_demo.payor_gold.fact_claims WHERE diagnosis_count > 1"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd3b23c1422803b4414f07f2217",
+        "question": [
+          "Total charges for claims with more than one diagnosis"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT diagnosis_code, diagnosis_desc, COUNT(DISTINCT claim_id) AS claims FROM payer_demo.payor_gold.claim_diagnosis GROUP BY diagnosis_code, diagnosis_desc ORDER BY claims DESC LIMIT 5"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd3a8b21d019cebe0f34cadfcae",
+        "question": [
+          "Top 5 diagnoses by number of claims"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT COUNT(DISTINCT member_id) AS members_with_claims FROM payer_demo.payor_gold.fact_claims"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd39d8e1db8aa84ca7bfd360fed",
+        "question": [
+          "How many members had at least one claim?"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT p.state, ROUND(AVG(f.total_charge), 2) AS avg_charge_per_claim FROM payer_demo.payor_gold.fact_claims f JOIN payer_demo.payor_gold.dim_provider p ON f.provider_id = p.provider_id GROUP BY p.state ORDER BY avg_charge_per_claim DESC"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd397d11fc7bf6743527ba75c0d",
+        "question": [
+          "Average charge per claim by provider state"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT\n",
+              "  `claim_month`,\n",
+              "  MEASURE(`denial_rate`) AS `denial_rate`\n",
+              "FROM\n",
+              "  `payer_demo`.`payor_gold`.`claims_metrics`\n",
+              "GROUP BY\n",
+              "  ALL\n",
+              "ORDER BY\n",
+              "  `claim_month` ASC"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd37abd1240aaf2c2bfc3061cdb",
+        "question": [
+          "Show denial rate by month"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT\n",
+              "  `dp`.`specialty`,\n",
+              "  SUM(`fc`.`total_charge`) AS `total_charges`\n",
+              "FROM\n",
+              "  `payer_demo`.`payor_gold`.`fact_claims` AS `fc`\n",
+              "    JOIN `payer_demo`.`payor_gold`.`dim_provider` AS `dp`\n",
+              "      ON `fc`.`provider_id` = `dp`.`provider_id`\n",
+              "WHERE\n",
+              "  `dp`.`specialty` IS NOT NULL\n",
+              "GROUP BY\n",
+              "  `dp`.`specialty`\n",
+              "ORDER BY\n",
+              "  `total_charges` DESC"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd370ca1b1081a8d89f6363309f",
+        "question": [
+          "Which provider specialty has the highest total charges?"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT m.plan_id, ROUND(SUM(f.total_charge), 2) AS total_charges FROM payer_demo.payor_gold.fact_claims f JOIN payer_demo.payor_gold.dim_member m ON f.member_id = m.member_id GROUP BY m.plan_id ORDER BY total_charges DESC"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd3645c1d59b56a6718d155c398",
+        "question": [
+          "Total billed amount by plan"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT\n",
+              "  MEASURE(`denial_rate`) AS `denial_rate`\n",
+              "FROM\n",
+              "  `payer_demo`.`payor_gold`.`claims_metrics`\n",
+              "GROUP BY\n",
+              "  ALL"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd3571f15d6b537c1d700521ab5",
+        "question": [
+          "What's our rejection rate?"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT\n",
+              "  MEASURE(`denial_rate`) AS `denial_rate`\n",
+              "FROM\n",
+              "  `payer_demo`.`payor_gold`.`claims_metrics`\n",
+              "GROUP BY\n",
+              "  ALL"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd33bfc1542b80436fd0710e5b1",
+        "question": [
+          "What is our overall denial rate?"
+        ]
+      },
+      {
+        "answer": [
+          {
+            "content": [
+              "SELECT COUNT(*) AS claims FROM payer_demo.payor_gold.fact_claims"
+            ],
+            "format": "SQL"
+          }
+        ],
+        "id": "01f1bdd30dc71b908ed0589a5669ce36",
+        "question": [
+          "How many claims do we have in total?"
+        ]
+      }
+    ]
+  },
+  "config": {
+    "sample_questions": [
+      {
+        "id": "01f1bdd163c1119db132a1ea12f9a3c1",
+        "question": [
+          "what is the distribution of claim statuses?"
+        ]
+      },
+      {
+        "id": "01f1bdd163c11c12bec8add5d9c8fa48",
+        "question": [
+          "What is monthly trend of total charges?"
+        ]
+      },
+      {
+        "id": "01f1bdd163c214f1b93247573c3b309b",
+        "question": [
+          "What is our denial rate by month?"
+        ]
+      }
+    ]
+  },
+  "data_sources": {
+    "tables": [
+      {
+        "column_configs": [
+          {
+            "column_name": "claim_id",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "diagnosis_code",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "diagnosis_desc",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          }
+        ],
+        "identifier": "payer_demo.payor_gold.claim_diagnosis"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "avg_charge_per_claim"
+          },
+          {
+            "column_name": "charges_per_member"
+          },
+          {
+            "column_name": "claim_count"
+          },
+          {
+            "column_name": "claim_date",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "claim_month",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "claim_status",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "denial_rate"
+          },
+          {
+            "column_name": "denied_claims"
+          },
+          {
+            "column_name": "member_gender",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "members_with_claims"
+          },
+          {
+            "column_name": "plan_id",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "provider_name",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "provider_specialty",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "provider_state",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "total_charges"
+          }
+        ],
+        "identifier": "payer_demo.payor_gold.claims_metrics"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "gender",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "member_id",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "plan_id",
+            "enable_format_assistance": true
+          }
+        ],
+        "identifier": "payer_demo.payor_gold.dim_member"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "city",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "provider_id",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "provider_name",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "specialty",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "state",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          }
+        ],
+        "identifier": "payer_demo.payor_gold.dim_provider"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "claim_date",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "claim_id",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "claim_status",
+            "enable_entity_matching": true,
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "diagnosis_count",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "member_id",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "provider_id",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "total_charge",
+            "enable_format_assistance": true
+          }
+        ],
+        "identifier": "payer_demo.payor_gold.fact_claims"
+      }
+    ]
+  },
+  "instructions": {
+    "join_specs": [
+      {
+        "id": "01f1bdd0ed17123b9a508131c73adaab",
+        "left": {
+          "alias": "fact_claims",
+          "identifier": "payer_demo.payor_gold.fact_claims"
+        },
+        "right": {
+          "alias": "dim_member",
+          "identifier": "payer_demo.payor_gold.dim_member"
+        },
+        "sql": [
+          "`fact_claims`.`member_id` = `dim_member`.`member_id`",
+          "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+        ]
+      },
+      {
+        "id": "01f1bdd0ed1715a2b708229c6abbf1e5",
+        "left": {
+          "alias": "fact_claims",
+          "identifier": "payer_demo.payor_gold.fact_claims"
+        },
+        "right": {
+          "alias": "dim_provider",
+          "identifier": "payer_demo.payor_gold.dim_provider"
+        },
+        "sql": [
+          "`fact_claims`.`provider_id` = `dim_provider`.`provider_id`",
+          "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+        ]
+      },
+      {
+        "id": "01f1bdd0ed1718aa98c773d861985969",
+        "left": {
+          "alias": "claim_diagnosis",
+          "identifier": "payer_demo.payor_gold.claim_diagnosis"
+        },
+        "right": {
+          "alias": "fact_claims",
+          "identifier": "payer_demo.payor_gold.fact_claims"
+        },
+        "sql": [
+          "`claim_diagnosis`.`claim_id` = `fact_claims`.`claim_id`",
+          "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+        ]
+      }
+    ]
+  },
+  "version": 2
+}

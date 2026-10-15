@@ -1,0 +1,507 @@
+{
+  "datasets": [
+    {
+      "asset_name": "payer_demo.payor_gold.claims_metrics",
+      "displayName": "Claims Metrics",
+      "name": "claims_metrics"
+    },
+    {
+      "displayName": "Top diagnoses",
+      "name": "c8bcf12b",
+      "queryLines": [
+        "SELECT diagnosis_code, diagnosis_desc,\r\n",
+        "       COUNT(DISTINCT claim_id) AS claims\r\n",
+        "FROM payer_demo.payor_gold.claim_diagnosis\r\n",
+        "GROUP BY ALL\r\n",
+        "ORDER BY claims DESC\r\n",
+        "LIMIT 15"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "displayName": "Claims Overview",
+      "layout": [
+        {
+          "position": {
+            "height": 2,
+            "width": 3,
+            "x": 0,
+            "y": 0
+          },
+          "widget": {
+            "name": "filter_claim_date",
+            "queries": [
+              {
+                "name": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_claim_date",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "`claim_date`",
+                      "name": "claim_date"
+                    },
+                    {
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)",
+                      "name": "claim_date_associativity"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "claim_date",
+                    "queryName": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_claim_date"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Claim Date"
+              },
+              "version": 2,
+              "widgetType": "filter-date-range-picker"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 2,
+            "width": 3,
+            "x": 3,
+            "y": 0
+          },
+          "widget": {
+            "name": "filter_plan",
+            "queries": [
+              {
+                "name": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_plan_id",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "`plan_id`",
+                      "name": "plan_id"
+                    },
+                    {
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)",
+                      "name": "plan_id_associativity"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "plan_id",
+                    "queryName": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_plan_id"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Plan"
+              },
+              "version": 2,
+              "widgetType": "filter-multi-select"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 2,
+            "width": 3,
+            "x": 6,
+            "y": 0
+          },
+          "widget": {
+            "name": "filter_provider_state",
+            "queries": [
+              {
+                "name": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_provider_state",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "`provider_state`",
+                      "name": "provider_state"
+                    },
+                    {
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)",
+                      "name": "provider_state_associativity"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "provider_state",
+                    "queryName": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_provider_state"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Provider State"
+              },
+              "version": 2,
+              "widgetType": "filter-multi-select"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 2,
+            "width": 6,
+            "x": 0,
+            "y": 2
+          },
+          "widget": {
+            "name": "counter_total_charges",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "MEASURE(`total_charges`)",
+                      "name": "measure(total_charges)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "data": {
+                "queryName": "main_query"
+              },
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(total_charges)",
+                  "rowNumber": 0
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total Charges"
+              },
+              "version": 2,
+              "widgetType": "counter"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 2,
+            "width": 6,
+            "x": 6,
+            "y": 2
+          },
+          "widget": {
+            "name": "counter_denial_rate",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "MEASURE(`denial_rate`)",
+                      "name": "measure(denial_rate)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "data": {
+                "queryName": "main_query"
+              },
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(denial_rate)",
+                  "format": {
+                    "decimalPlaces": {
+                      "places": 1,
+                      "type": "exact"
+                    },
+                    "type": "number-percent"
+                  },
+                  "rowNumber": 0
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "fields": [],
+                  "value": "Denial Rate"
+                }
+              },
+              "version": 2,
+              "widgetType": "counter"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 4,
+            "width": 6,
+            "x": 0,
+            "y": 4
+          },
+          "widget": {
+            "name": "line_claim_count",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "DATE_TRUNC(\"MONTH\", `claim_month`)",
+                      "name": "monthly(claim_month)"
+                    },
+                    {
+                      "expression": "MEASURE(`claim_count`)",
+                      "name": "measure(claim_count)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "data": {
+                "queryName": "main_query"
+              },
+              "encodings": {
+                "x": {
+                  "displayName": "Month",
+                  "fieldName": "monthly(claim_month)",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "displayName": "Claim Count",
+                  "fieldName": "measure(claim_count)",
+                  "scale": {
+                    "domain": {
+                      "min": 0
+                    },
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "fields": [],
+                  "value": "Claim Count by Month"
+                }
+              },
+              "version": 3,
+              "widgetType": "line"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 4,
+            "width": 6,
+            "x": 6,
+            "y": 4
+          },
+          "widget": {
+            "name": "line_denial_rate",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "DATE_TRUNC(\"MONTH\", `claim_month`)",
+                      "name": "monthly(claim_month)"
+                    },
+                    {
+                      "expression": "MEASURE(`denial_rate`)",
+                      "name": "measure(denial_rate)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "data": {
+                "queryName": "main_query"
+              },
+              "encodings": {
+                "x": {
+                  "displayName": "Month",
+                  "fieldName": "monthly(claim_month)",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "displayName": "Denial Rate",
+                  "fieldName": "measure(denial_rate)",
+                  "format": {
+                    "decimalPlaces": {
+                      "places": 1,
+                      "type": "exact"
+                    },
+                    "type": "number-percent"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "fields": [],
+                  "value": "Denial Rate by Month"
+                }
+              },
+              "version": 3,
+              "widgetType": "line"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 4,
+            "width": 12,
+            "x": 0,
+            "y": 8
+          },
+          "widget": {
+            "name": "bar_charges_by_specialty",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "`provider_specialty`",
+                      "name": "provider_specialty"
+                    },
+                    {
+                      "expression": "MEASURE(`total_charges`)",
+                      "name": "measure(total_charges)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "data": {
+                "queryName": "main_query"
+              },
+              "encodings": {
+                "x": {
+                  "displayName": "Provider Specialty",
+                  "fieldName": "provider_specialty",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "displayName": "Total Charges",
+                  "fieldName": "measure(total_charges)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "fields": [],
+                  "value": "Total Charges by Provider Specialty"
+                }
+              },
+              "version": 3,
+              "widgetType": "bar"
+            }
+          }
+        },
+        {
+          "position": {
+            "height": 2,
+            "width": 3,
+            "x": 9,
+            "y": 0
+          },
+          "widget": {
+            "name": "filter_provider_specialty",
+            "queries": [
+              {
+                "name": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_provider_specialty",
+                "query": {
+                  "datasetName": "claims_metrics",
+                  "disaggregated": false,
+                  "fields": [
+                    {
+                      "expression": "`provider_specialty`",
+                      "name": "provider_specialty"
+                    },
+                    {
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)",
+                      "name": "provider_specialty_associativity"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "provider_specialty",
+                    "queryName": "dashboards/01f1bdb57863114f9b76f373383e656f/datasets/01f1bdb5df5c1a08828eda44cdb50a7b_provider_specialty"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Provider Specialty"
+              },
+              "version": 2,
+              "widgetType": "filter-multi-select"
+            }
+          }
+        }
+      ],
+      "layoutVersion": "GRID_V1",
+      "name": "b62b0a81",
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "applyModeEnabled": false,
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    }
+  }
+}

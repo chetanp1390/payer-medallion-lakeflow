@@ -1,0 +1,28 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:              # lets you rerun a prod deploy by hand
+
+concurrency:
+  group: databricks-workspace
+  cancel-in-progress: false
+
+jobs:
+  prod:
+    name: prod
+    runs-on: ubuntu-latest
+    environment: prod             # waits for your approval
+    env:
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@main
+      - name: Validate
+        run: databricks bundle validate -t prod
+      - name: Deploy to prod
+        run: databricks bundle deploy -t prod
+      - name: Refresh data and run tests
+        run: databricks bundle run payer_refresh -t prod

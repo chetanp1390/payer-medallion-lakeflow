@@ -1,0 +1,19 @@
+resources:
+  pipelines:
+    payer_pipeline:
+      name: payer_medallion
+      catalog: ${var.catalog}
+      schema: ${var.bronze_schema}   # bronze tables land in the default schema
+      serverless: true
+      photon: true
+      channel: CURRENT
+      continuous: false
+      root_path: ../src/transformations
+      configuration:
+        conf.catalog_name: ${var.catalog}
+        conf.bronze_schema_name: ${var.bronze_schema}
+        conf.silver_schema_name: ${var.silver_schema}
+        conf.gold_schema_name: ${var.gold_schema}
+      libraries:
+        - glob:
+            include: ../src/transformations/**
