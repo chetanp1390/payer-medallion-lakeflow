@@ -265,6 +265,19 @@
             "enable_format_assistance": true
           },
           {
+            "column_name": "denial_risk",
+            "enable_format_assistance": true
+          }
+        ],
+        "identifier": "payer_demo.payor_gold.claim_denial_scores"
+      },
+      {
+        "column_configs": [
+          {
+            "column_name": "claim_id",
+            "enable_format_assistance": true
+          },
+          {
             "column_name": "diagnosis_code",
             "enable_format_assistance": true
           },
