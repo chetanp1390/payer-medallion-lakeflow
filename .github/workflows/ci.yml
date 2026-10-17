@@ -4,9 +4,11 @@ on:
   pull_request:
     branches: [main]
 
+# One queue per pull request: a newer push cancels that PR's older run.
+# Kept separate from CD, so a prod run waiting for approval can't block CI.
 concurrency:
-  group: databricks-workspace     # Free Edition runs one pipeline at a time
-  cancel-in-progress: false
+  group: ci-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   dev:

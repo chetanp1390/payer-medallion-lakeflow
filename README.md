@@ -119,7 +119,7 @@ flowchart LR
 
 - **`ci.yml`** runs on every pull request into `main`: validate, deploy to dev, run the job including the data tests. A failed test fails the check, and branch protection blocks the merge.
 - **`cd.yml`** runs on every push to `main`: it waits for approval through the `prod` GitHub environment, then deploys to prod and runs the job.
-- Both workflows share one concurrency group, because Free Edition runs one pipeline update at a time.
+- Each workflow has its own concurrency group: a newer push to a pull request cancels that PR's older CI run, and prod deploys queue one at a time. A dev and a prod run can overlap; if Free Edition refuses a second pipeline update, rerun the failed job.
 
 Authentication uses a personal access token stored as a GitHub secret, because Free Edition has no account console. In a production organisation this would be a service principal with GitHub OIDC workload identity federation, so no long-lived secret is stored.
 

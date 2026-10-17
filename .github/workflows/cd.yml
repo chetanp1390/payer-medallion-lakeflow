@@ -5,8 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:              # lets you rerun a prod deploy by hand
 
+# Prod deploys run one at a time and are never cancelled mid-deploy.
+# Separate from CI, so CI runs don't cancel a queued prod deploy.
 concurrency:
-  group: databricks-workspace
+  group: cd-prod
   cancel-in-progress: false
 
 jobs:
